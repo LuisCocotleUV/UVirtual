@@ -1,151 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://bq7ydntkdpm0q"]
+[gd_scene load_steps=2 format=3 uid="uid://cqhtc48xgf4jq"]
 
-[ext_resource type="Shader" path="res://Escenas/menu_pausa.gdshader" id="1_apekd"]
-[ext_resource type="Script" path="res://Escenas/menu_pausa.gd" id="2_pbew3"]
+[ext_resource type="Script" path="res://Scripts/Interfaces/menu_pausa.gd" id="1_ouxse"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bibgw"]
-shader = ExtResource("1_apekd")
-shader_parameter/blur = null
-shader_parameter/brightness = 1.0
-
-[sub_resource type="Animation" id="Animation_6ryjw"]
-resource_name = "Pausa"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/blur")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [null, 2.5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/brightness")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [1.0, 0.9]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_p54ge"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/blur")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/brightness")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_vg88w"]
-resource_name = "Reanudar"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/blur")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/brightness")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xm6gb"]
-_data = {
-"Pausa": SubResource("Animation_6ryjw"),
-"RESET": SubResource("Animation_p54ge"),
-"Reanudar": SubResource("Animation_vg88w")
-}
-
-[node name="menuPausa" type="ColorRect"]
-process_mode = 3
-material = SubResource("ShaderMaterial_bibgw")
+[node name="menu_pausa" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_pbew3")
+script = ExtResource("1_ouxse")
+
+[node name="fondo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.533333)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -153,40 +28,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="contenedorMenuJuego" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="lblPausa" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/contenedorMenuJuego"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Pausa"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/contenedorMenuJuego"]
+[node name="separador" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="bttnReanudar" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/contenedorMenuJuego"]
+[node name="bttn_continuar" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-focus_neighbor_top = NodePath("../bttnSalir")
-text = "Reanudar partida"
+text = "Reanudar juego"
 
-[node name="bttnSalir" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/contenedorMenuJuego"]
+[node name="bttn_opciones" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-focus_neighbor_bottom = NodePath("../bttnReanudar")
-text = "Salir de la partida"
+text = "Opciones (WIP)"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_xm6gb")
-}
+[node name="bttn_salirMenu" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Salir al menú principal"
+
+[node name="bttn_salir" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Salir del juego"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/bttn_continuar" to="." method="_on_bttn_continuar_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/bttn_salir" to="." method="_on_bttn_salir_pressed"]

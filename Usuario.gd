@@ -78,7 +78,3 @@ func _balCam(time) -> Vector3:
 	pos.x = cos(time * balanceo_frec / 2) * balanceo_ampl 
 	return pos
 	
-# No funcionó la pausa ._.XD
-#func _input(event: InputEvent) -> void:
-#	if event.is_action_pressed("ui_cancel"):
-#		$menuPausa.pause()

@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cm5in3tnqh7ic"]
+[gd_scene load_steps=14 format=3 uid="uid://cm5in3tnqh7ic"]
 
 [ext_resource type="Script" path="res://Usuario.gd" id="1_mfqjr"]
+[ext_resource type="Script" path="res://Scripts/mundo.gd" id="1_njh2w"]
 [ext_resource type="Texture2D" uid="uid://r3u4ljqb3usa" path="res://Texturas/istockphoto-541573492-612x612.jpg" id="1_trido"]
 [ext_resource type="AudioStream" uid="uid://c6k41lfveuwrv" path="res://Sonido/dun.wav" id="3_560b7"]
 [ext_resource type="Texture2D" uid="uid://bhpukj1ngd4fl" path="res://Texturas/1200px-Logo_de_la_Universidad_Veracruzana.svg.png" id="4_1glej"]
+[ext_resource type="PackedScene" uid="uid://cqhtc48xgf4jq" path="res://Escenas/menu_pausa.tscn" id="5_gq4bp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u0jew"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -29,6 +31,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 albedo_texture = ExtResource("4_1glej")
 
 [node name="Mundo" type="Node3D"]
+script = ExtResource("1_njh2w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -98,3 +101,6 @@ autoplay = true
 transform = Transform3D(0.853269, 0, -0.521471, 0, 1, 0, 0.521471, 0, 0.853269, 20.3435, 22.0147, -22.1328)
 size = Vector3(30, 30, 1)
 material = SubResource("StandardMaterial3D_dohdv")
+
+[node name="menu_pausa" parent="." node_paths=PackedStringArray("mundo") instance=ExtResource("5_gq4bp")]
+mundo = NodePath("..")
