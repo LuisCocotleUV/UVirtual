@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cm5in3tnqh7ic"]
+[gd_scene load_steps=15 format=3 uid="uid://cm5in3tnqh7ic"]
 
 [ext_resource type="Script" path="res://Usuario.gd" id="1_mfqjr"]
 [ext_resource type="Script" path="res://Scripts/mundo.gd" id="1_njh2w"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://c6k41lfveuwrv" path="res://Sonido/dun.wav" id="3_560b7"]
 [ext_resource type="Texture2D" uid="uid://bhpukj1ngd4fl" path="res://Texturas/1200px-Logo_de_la_Universidad_Veracruzana.svg.png" id="4_1glej"]
 [ext_resource type="PackedScene" uid="uid://cqhtc48xgf4jq" path="res://Escenas/menu_pausa.tscn" id="5_gq4bp"]
+[ext_resource type="MeshLibrary" uid="uid://xr48klab5pr5" path="res://3D/tileset.tres" id="7_3wpqx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u0jew"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -41,6 +42,7 @@ shadow_enabled = true
 environment = SubResource("Environment_604dp")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
 use_collision = true
 size = Vector3(50, 0, 50)
 material = SubResource("StandardMaterial3D_4xn3c")
@@ -64,31 +66,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5336, 0.54652, 0)
+visible = false
 use_collision = true
 size = Vector3(1, 1, 50)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124271, 0.453806, -24.4572)
+visible = false
 use_collision = true
 size = Vector3(50, 1, 1)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8322, 0.476882, 0)
+visible = false
 use_collision = true
 size = Vector3(1, 1, 50)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248543, 0.456113, 24.4408)
+visible = false
 use_collision = true
 size = Vector3(50, 1, 1)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(0.718721, 0, -0.695298, 0, 1, 0, 0.695298, 0, 0.718721, 12.355, 0.503816, 12.4721)
+visible = false
 use_collision = true
 size = Vector3(2, 2, 2)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
 transform = Transform3D(0.922706, 0, -0.385503, 0, 1, 0, 0.385503, 0, 0.922706, 8.58384, 0, 15.6525)
+visible = false
 use_collision = true
 size = Vector3(3, 1, 3)
 
@@ -104,3 +112,12 @@ material = SubResource("StandardMaterial3D_dohdv")
 
 [node name="menu_pausa" parent="." node_paths=PackedStringArray("mundo") instance=ExtResource("5_gq4bp")]
 mundo = NodePath("..")
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00116539, 0.0841293, -0.0124512)
+mesh_library = ExtResource("7_3wpqx")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65533, 26, 1, 65533, 29, 1, 65533, 30, 1, 65533, 31, 1, 65533, 28, 1, 65533, 27, 1, 65533, 32, 1, 65533, 33, 1, 65533, 34, 1, 65535, 26, 1, 65535, 27, 1, 65535, 28, 1, 65535, 29, 1, 65535, 30, 1, 65535, 31, 1, 65535, 32, 1, 65535, 33, 1, 65534, 33, 1, 65534, 34, 1, 65535, 34, 1, 2, 31, 2, 2, 32, 2, 2, 33, 2, 2, 34, 2, 2, 30, 2, 2, 29, 2, 2, 28, 2, 2, 27, 2, 2, 26, 2)
+}
